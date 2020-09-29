@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 0350cd66505737840972b3c4aeebc702
+timeCreated: 1598376823
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: JMH Cthulhumbus Arcade
+  fontNames:
+  - JMH Cthulhumbus Arcade
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
