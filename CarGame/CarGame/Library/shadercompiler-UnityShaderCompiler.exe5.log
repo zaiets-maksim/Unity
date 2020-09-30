@@ -1,2 +1,46 @@
 Base path: D:/Programs/Unity/Editor/Data
 Cmd: initializeCompiler
+Cmd: disassembleShader
+  api=9 insize=5321 outsize=5321 ok=1
+Cmd: disassembleShader
+  api=5 insize=6703 outsize=6703 ok=1
+Cmd: disassembleShader
+  api=9 insize=7433 outsize=7433 ok=1
+Cmd: disassembleShader
+  api=5 insize=6777 outsize=6777 ok=1
+Cmd: disassembleShader
+  api=5 insize=6777 outsize=6777 ok=1
+Cmd: disassembleShader
+  api=5 insize=6777 outsize=6777 ok=1
+Cmd: disassembleShader
+  api=9 insize=6645 outsize=6645 ok=1
+Cmd: disassembleShader
+  api=18 insize=4339 outsize=41894 ok=1
+Cmd: disassembleShader
+  api=18 insize=5481 outsize=53973 ok=1
+Cmd: disassembleShader
+  api=18 insize=0 outsize=1 ok=1
+Cmd: disassembleShader
+  api=9 insize=0 outsize=57 ok=1
+Cmd: disassembleShader
+  api=5 insize=2912 outsize=2912 ok=1
+Cmd: disassembleShader
+  api=18 insize=2248 outsize=21468 ok=1
+Cmd: disassembleShader
+  api=5 insize=0 outsize=57 ok=1
+Cmd: disassembleShader
+  api=5 insize=3233 outsize=3233 ok=1
+Cmd: disassembleShader
+  api=5 insize=3277 outsize=3277 ok=1
+Cmd: disassembleShader
+  api=18 insize=2542 outsize=24792 ok=1
+Cmd: disassembleShader
+  api=5 insize=0 outsize=57 ok=1
+Cmd: disassembleShader
+  api=5 insize=5133 outsize=5133 ok=1
+Cmd: disassembleShader
+  api=5 insize=5016 outsize=5016 ok=1
+Cmd: disassembleShader
+  api=18 insize=0 outsize=1 ok=1
+Cmd: disassembleShader
+  api=18 insize=0 outsize=1 ok=1

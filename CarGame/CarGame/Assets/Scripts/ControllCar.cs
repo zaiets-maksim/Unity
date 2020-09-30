@@ -5,79 +5,90 @@ using UnityEngine.UI;
 
 public class ControllCar : MonoBehaviour {
 
-public ParticleSystem Smoke;
+	public ParticleSystem Smoke;
 	public Rigidbody Rb;
 	public GameObject Car;
-	new public Camera Camera;
+	private Camera _camera;
 	public Slider Slider;
 	public float Speed;
 	private Vector2 Position;
 	public GameObject DieCanvas;
 	public Canvas CanvasPanelGame;
-
 	public int SwipeR = 0;
 	public int SwipeL = 0;
-
-	// Use this for initialization
+	Quaternion _CameraQuaternion;
+	Quaternion _rotationRight;
+	Quaternion _rotationLeft;
+	Quaternion _rotationCenter;
+	Transform _myTransform;
+	Transform _cameraTransform;
 	void Start () {
+		_camera = Camera.main;
 		Rb = GetComponent<Rigidbody>();
+		_CameraQuaternion = new Quaternion(46.731f, 0, 0, 180);
+		_rotationRight = new Quaternion (0, 18, 0, 180);
+		_rotationLeft = new Quaternion (0, -18, 0, 180);
+		_rotationCenter = new Quaternion (0, 0, 0, 180);
+		Car.transform.rotation = _rotationCenter;
+		_myTransform = GetComponent<Transform>();
+		_cameraTransform = _camera.GetComponent<Transform>();
 	}
 	void FixedUpdate ()
 	{
-		Camera.transform.position = new Vector3 (Car.transform.position.x/3, (Car.transform.position.y + 26.3f), Car.transform.position.z -21.7f);
-		Camera.transform.rotation = new Quaternion(46.731f, 0, 0, 180);
-		 Rb.velocity = new Vector3 (0, Rb.velocity.y, Speed);
-		Car.transform.rotation = new Quaternion (0, 0, 0, 180);
-
+		_cameraTransform.position = new Vector3 (_myTransform.position.x/3, (_myTransform.position.y + 26.3f), _myTransform.position.z -21.7f);
+		_cameraTransform.rotation = _CameraQuaternion;
+		
+		Rb.velocity = new Vector3 (0, Rb.velocity.y, Speed);
+	
 
 			SwipeR = PlayerPrefs.GetInt("swipeR");
 			SwipeL = PlayerPrefs.GetInt("swipeL");
  
 			 if(SwipeR == 1){
-				 Vector3 Pos2 = new Vector3 (6f, transform.position.y, transform.position.z);
+				 Vector3 Pos2 = new Vector3 (6f, _myTransform.position.y, _myTransform.position.z);
 				 
-				 if(Car.transform.position.x < 0){
-					 Vector3 Pos1 = transform.position;
-					Pos2 = new Vector3 (0f, transform.position.y, transform.position.z);
-					transform.position = Vector3.MoveTowards (Pos1, Pos2, Time.deltaTime *17);
-					Car.transform.rotation = new Quaternion (0, 18, 0, 180);
-					if(Car.transform.position.x >= -0.1f){
-			 Car.transform.rotation = new Quaternion (0, 0, 0, 180);
+				 if(_myTransform.position.x < 0){
+					 Vector3 Pos1 = _myTransform.position;
+					Pos2 = new Vector3 (0f, _myTransform.position.y, _myTransform.position.z);
+					_myTransform.position = Vector3.MoveTowards (Pos1, Pos2, Time.deltaTime *17);
+					_myTransform.rotation = _rotationRight;
+					if(_myTransform.position.x >= -0.1f){
+			 _myTransform.rotation = _rotationCenter;
 			 	 SwipeR = 0;
 		PlayerPrefs.SetInt("swipeR",SwipeR);
 				}
 			}
 				else{
-				Vector3 Pos1 = transform.position;
-        transform.position = Vector3.MoveTowards (Pos1, Pos2, Time.deltaTime *17);
+				Vector3 Pos1 = _myTransform.position;
+        _myTransform.position = Vector3.MoveTowards (Pos1, Pos2, Time.deltaTime *17);
 
-			 Car.transform.rotation = new Quaternion (0, 18, 0, 180);
-			 if(Car.transform.position.x >= 5.9f)
-			 Car.transform.rotation = new Quaternion (0, 0, 0, 180);}
+			 _myTransform.rotation = _rotationRight;
+			 if(_myTransform.position.x >= 5.9f)
+			 _myTransform.rotation = _rotationCenter;}
 			 }
 
 			
 				if(SwipeL == 1){
-				 Vector3 Pos2 = new Vector3 (-6f, transform.position.y, transform.position.z);
+				 Vector3 Pos2 = new Vector3 (-6f, _myTransform.position.y, _myTransform.position.z);
 				 
-				 if(Car.transform.position.x > 0){
-					 Vector3 Pos1 = transform.position;
-					Pos2 = new Vector3 (0f, transform.position.y, transform.position.z);
-					transform.position = Vector3.MoveTowards (Pos1, Pos2, Time.deltaTime *17);
-					Car.transform.rotation = new Quaternion (0, -18, 0, 180);
-					if(Car.transform.position.x <= 0.1f){
-			 Car.transform.rotation = new Quaternion (0, 0, 0, 180);
+				 if(_myTransform.position.x > 0){
+					 Vector3 Pos1 = _myTransform.position;
+					Pos2 = new Vector3 (0f, _myTransform.position.y, _myTransform.position.z);
+					_myTransform.position = Vector3.MoveTowards (Pos1, Pos2, Time.deltaTime *17);
+					_myTransform.rotation = _rotationLeft;
+					if(_myTransform.position.x <= 0.1f){
+			 _myTransform.rotation = _rotationCenter;
 			 	 SwipeL = 0;
 			PlayerPrefs.SetInt("swipeL",SwipeL);
 					}
 			}
 				else{
-				Vector3 Pos1 = transform.position;
-        transform.position = Vector3.MoveTowards (Pos1, Pos2, Time.deltaTime *17);
+				Vector3 Pos1 = _myTransform.position;
+        _myTransform.position = Vector3.MoveTowards (Pos1, Pos2, Time.deltaTime *17);
 
-			 Car.transform.rotation = new Quaternion (0, -18, 0, 180);
-			 if(Car.transform.position.x <= -5.9f)
-			 Car.transform.rotation = new Quaternion (0, 0, 0, 180);
+			 _myTransform.rotation = _rotationLeft;
+			 if(_myTransform.position.x <= -5.9f)
+			 _myTransform.rotation = _rotationCenter;
 			 }
 		}
 
@@ -85,7 +96,7 @@ public ParticleSystem Smoke;
 	}
 
 	void LateUpdate(){
-		if(Car.transform.position.y < -10f){
+		if(_myTransform.position.y < -10f){
 		Die();
 		}
 	}

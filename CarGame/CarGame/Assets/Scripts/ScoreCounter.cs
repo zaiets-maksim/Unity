@@ -6,11 +6,9 @@ using UnityEngine.UI;
 public class ScoreCounter : MonoBehaviour {
 bool _isTimerWork;
 float _memTime;
-float Timer;
-int var;
-
+float _timer;
+int _var;
 public Text Counter;
-
 public GameObject Car;
 	void Start () {
 		_isTimerWork = true;
@@ -22,13 +20,13 @@ public GameObject Car;
 //Где-то на карутине или апдейте
 	if (_isTimerWork) {
    //var = (int)((Time.time - _memTime)*17.5f);
-   Timer = (Time.timeSinceLevelLoad - _memTime)*17.5f;
-   var = (int)Timer;
+   _timer = (Time.timeSinceLevelLoad - _memTime)*17.5f;
+   _var = (int)_timer;
    //Counter.text = Timer.ToString();
-   Counter.text = var.ToString();
+   Counter.text = _var.ToString();
    if (Car.transform.position.y <= -10f) {
       _isTimerWork = false;
-	Timer = Time.timeSinceLevelLoad - _memTime;
+	_timer = Time.timeSinceLevelLoad - _memTime;
     		}
 		}
 	}
