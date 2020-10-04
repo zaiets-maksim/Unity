@@ -4,30 +4,17 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class ScoreCounter : MonoBehaviour {
-bool _isTimerWork;
-float _memTime;
-float _timer;
-int _var;
+public static int _var; //суперглобальная переменная
 public Text Counter;
 public GameObject Car;
+Transform _myTransform;
 	void Start () {
-		_isTimerWork = true;
-		_memTime = Time.timeSinceLevelLoad;
+		_myTransform = Car.GetComponent<Transform>();
 	}
 	
-
-	void Update () {
-//Где-то на карутине или апдейте
-	if (_isTimerWork) {
-   //var = (int)((Time.time - _memTime)*17.5f);
-   _timer = (Time.timeSinceLevelLoad - _memTime)*17.5f;
-   _var = (int)_timer;
-   //Counter.text = Timer.ToString();
-   Counter.text = _var.ToString();
-   if (Car.transform.position.y <= -10f) {
-      _isTimerWork = false;
-	_timer = Time.timeSinceLevelLoad - _memTime;
-    		}
-		}
+	void FixedUpdate(){
+		_var = (int)(_myTransform.position.z);
+		 Counter.text = _var.ToString();
+		 //PlayerPrefs.SetInt("newRecord", _var);
 	}
 }

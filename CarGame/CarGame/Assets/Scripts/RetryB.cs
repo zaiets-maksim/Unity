@@ -19,6 +19,6 @@ public class RetryB : MonoBehaviour, IPointerUpHandler {
 		Time.timeScale = 1f;
 		DieCanvas.SetActive(false);
 
-	SceneManager.LoadScene("GamePlay", LoadSceneMode.Single);
+	SceneManager.LoadScene("GamePlay1", LoadSceneMode.Single);
 	}
 }

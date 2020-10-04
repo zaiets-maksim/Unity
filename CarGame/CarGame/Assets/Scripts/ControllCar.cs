@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
 public class ControllCar : MonoBehaviour {
-
 	public ParticleSystem Smoke;
 	public Rigidbody Rb;
 	public GameObject Car;
@@ -14,8 +12,8 @@ public class ControllCar : MonoBehaviour {
 	private Vector2 Position;
 	public GameObject DieCanvas;
 	public Canvas CanvasPanelGame;
-	public int SwipeR = 0;
-	public int SwipeL = 0;
+	int _swipeR = 0;
+	int _swipeL = 0;
 	Quaternion _CameraQuaternion;
 	Quaternion _rotationRight;
 	Quaternion _rotationLeft;
@@ -34,17 +32,17 @@ public class ControllCar : MonoBehaviour {
 		_cameraTransform = _camera.GetComponent<Transform>();
 	}
 	void FixedUpdate ()
-	{
+	{	Speed += 0.005f;
 		_cameraTransform.position = new Vector3 (_myTransform.position.x/3, (_myTransform.position.y + 26.3f), _myTransform.position.z -21.7f);
 		_cameraTransform.rotation = _CameraQuaternion;
 		
 		Rb.velocity = new Vector3 (0, Rb.velocity.y, Speed);
 	
 
-			SwipeR = PlayerPrefs.GetInt("swipeR");
-			SwipeL = PlayerPrefs.GetInt("swipeL");
- 
-			 if(SwipeR == 1){
+			_swipeR = PlayerPrefs.GetInt("swipeR");
+			_swipeL = PlayerPrefs.GetInt("swipeL");
+	
+			 if(_swipeR == 1){
 				 Vector3 Pos2 = new Vector3 (6f, _myTransform.position.y, _myTransform.position.z);
 				 
 				 if(_myTransform.position.x < 0){
@@ -54,8 +52,8 @@ public class ControllCar : MonoBehaviour {
 					_myTransform.rotation = _rotationRight;
 					if(_myTransform.position.x >= -0.1f){
 			 _myTransform.rotation = _rotationCenter;
-			 	 SwipeR = 0;
-		PlayerPrefs.SetInt("swipeR",SwipeR);
+			 	 _swipeR = 0;
+		PlayerPrefs.SetInt("swipeR",_swipeR);
 				}
 			}
 				else{
@@ -67,8 +65,8 @@ public class ControllCar : MonoBehaviour {
 			 _myTransform.rotation = _rotationCenter;}
 			 }
 
-			
-				if(SwipeL == 1){
+	
+				if(_swipeL == 1){
 				 Vector3 Pos2 = new Vector3 (-6f, _myTransform.position.y, _myTransform.position.z);
 				 
 				 if(_myTransform.position.x > 0){
@@ -78,8 +76,8 @@ public class ControllCar : MonoBehaviour {
 					_myTransform.rotation = _rotationLeft;
 					if(_myTransform.position.x <= 0.1f){
 			 _myTransform.rotation = _rotationCenter;
-			 	 SwipeL = 0;
-			PlayerPrefs.SetInt("swipeL",SwipeL);
+			 	 _swipeL = 0;
+			PlayerPrefs.SetInt("swipeL",_swipeL);
 					}
 			}
 				else{
@@ -102,6 +100,11 @@ public class ControllCar : MonoBehaviour {
 	}
 
 	private void Die(){
+		int _oldRecord = PlayerPrefs.GetInt("newRecord");
+
+		if(_oldRecord < ScoreCounter._var)
+		PlayerPrefs.SetInt("newRecord", ScoreCounter._var);
+		
 		DieCanvas.SetActive(true);
 		CanvasPanelGame.enabled = false;
 	}
