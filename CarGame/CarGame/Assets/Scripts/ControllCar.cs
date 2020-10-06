@@ -100,13 +100,14 @@ public class ControllCar : MonoBehaviour {
 	}
 
 	private void Die(){
-		int _oldRecord = PlayerPrefs.GetInt("newRecord");
+		int _newRecord = PlayerPrefs.GetInt("newRecord");
 
-		if(_oldRecord < ScoreCounter._var)
+		if(_newRecord < ScoreCounter._var)
 		PlayerPrefs.SetInt("newRecord", ScoreCounter._var);
 		
 		DieCanvas.SetActive(true);
 		CanvasPanelGame.enabled = false;
+
 	}
 
     [System.Obsolete]

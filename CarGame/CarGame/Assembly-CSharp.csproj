@@ -48,10 +48,13 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\ControllCar.cs" />
      <Compile Include="Assets\Scripts\ControllerSwipeCar.cs" />
+     <Compile Include="Assets\Scripts\GetAnimation.cs" />
+     <Compile Include="Assets\Scripts\GetLastScore.cs" />
      <Compile Include="Assets\Scripts\GetScoreRecord.cs" />
      <Compile Include="Assets\Scripts\Money.cs" />
      <Compile Include="Assets\Scripts\MoveEnemyCar.cs" />
      <Compile Include="Assets\Scripts\PlayB.cs" />
+     <Compile Include="Assets\Scripts\QuitB.cs" />
      <Compile Include="Assets\Scripts\RetryB.cs" />
      <Compile Include="Assets\Scripts\ScoreCounter.cs" />
      <Compile Include="Assets\Scripts\SpawnMainRoadObj.cs" />

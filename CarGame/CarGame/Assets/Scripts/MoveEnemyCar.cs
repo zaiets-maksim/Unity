@@ -9,6 +9,8 @@ public class MoveEnemyCar : MonoBehaviour {
 	Transform _cameraTransform;
 	Rigidbody _rb;
 	Quaternion _rotationCenter;
+
+	public float speed;
 	void Start () {
 		_cameraTransform = Camera.main.GetComponent<Transform>();
 		_myTransform = GetComponent<Transform>();
@@ -17,9 +19,9 @@ public class MoveEnemyCar : MonoBehaviour {
 		_myTransform.rotation = _rotationCenter;
 	}
 	
-	// Update is called once per frame
 	void FixedUpdate () {
-		_rb.velocity = new Vector3 (0, _rb.velocity.y, -50);
+		//speed += 0.0002f;
+		_rb.velocity = new Vector3 (0, _rb.velocity.y, speed);
 		if(_myTransform.position.z < _cameraTransform.position.z)
 		Destroy(_rb.gameObject);
 	}

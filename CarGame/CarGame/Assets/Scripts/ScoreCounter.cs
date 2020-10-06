@@ -15,6 +15,5 @@ Transform _myTransform;
 	void FixedUpdate(){
 		_var = (int)(_myTransform.position.z);
 		 Counter.text = _var.ToString();
-		 //PlayerPrefs.SetInt("newRecord", _var);
 	}
 }

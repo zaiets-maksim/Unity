@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 public class GetScoreRecord : MonoBehaviour {
 
-	int _oldRecprd;
 	int _newRecord;
 	public Text RecordScore;
 	void Start () {
+		Screen.sleepTimeout = SleepTimeout.NeverSleep;
 		_newRecord = PlayerPrefs.GetInt("newRecord");
 		RecordScore.text = "Record: "+_newRecord.ToString();
 	}
