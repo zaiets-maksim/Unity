@@ -9,7 +9,6 @@ public class PauseScript : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 	public Canvas canvas;
 	public GameObject ButtonResume;
 	public GameObject ButtonPause;
-	public GameObject Shadow;
 
 	void Start () {
 		canvas.enabled = false;
@@ -26,7 +25,6 @@ public class PauseScript : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 		canvas.enabled = true;
 		ButtonPause.SetActive (false);
 		ButtonResume.SetActive (true);
-		Shadow.SetActive (true);
 		Time.timeScale = 0f;
 
 	}

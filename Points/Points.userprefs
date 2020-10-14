@@ -1,0 +1,16 @@
+﻿<Properties StartupItem="Assembly-CSharp.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\MovementPath.cs">
+    <Files>
+      <File FileName="Assets\MovementPath.cs" Line="15" Column="2" />
+      <File FileName="Assets\FollowPath.cs" Line="42" Column="3" />
+      <File FileName="Assets\PauseScript.cs" Line="12" Column="29" />
+      <File FileName="Assets\Resume.cs" Line="20" Column="36" />
+      <File FileName="Assets\ForStar.cs" Line="9" Column="38" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
