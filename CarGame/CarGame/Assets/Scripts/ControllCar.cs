@@ -7,8 +7,7 @@ public class ControllCar : MonoBehaviour {
 	public Rigidbody Rb;
 	public GameObject Car;
 	private Camera _camera;
-	public Slider Slider;
-	public float Speed;
+	public static float Speed;
 	private Vector2 Position;
 	public GameObject DieCanvas;
 	public Canvas CanvasPanelGame;
@@ -30,9 +29,12 @@ public class ControllCar : MonoBehaviour {
 		Car.transform.rotation = _rotationCenter;
 		_myTransform = GetComponent<Transform>();
 		_cameraTransform = _camera.GetComponent<Transform>();
+		StartCoroutine("UpdateSpeed");
+		
 	}
 	void FixedUpdate ()
-	{	Speed += 0.005f;
+	{	
+	
 		_cameraTransform.position = new Vector3 (_myTransform.position.x/3, (_myTransform.position.y + 26.3f), _myTransform.position.z -21.7f);
 		_cameraTransform.rotation = _CameraQuaternion;
 		
@@ -93,6 +95,12 @@ public class ControllCar : MonoBehaviour {
 			 
 	}
 
+	IEnumerator UpdateSpeed(){
+		
+		for (Speed = 20; Speed <= 65; Speed += 0.5f)
+		yield return new WaitForSeconds(3);
+	}
+
 	void LateUpdate(){
 		if(_myTransform.position.y < -10f){
 		Die();
@@ -109,28 +117,9 @@ public class ControllCar : MonoBehaviour {
 		CanvasPanelGame.enabled = false;
 
 	}
-
-    [System.Obsolete]
-    void OnTriggerEnter(Collider collider) {
-	if (collider.gameObject.CompareTag("N2o")){
-        Destroy(collider.gameObject);
-		Speed = Speed*1.6f;
-		Smoke.startColor = new Color(0,189,255,255);
-		
-		StartCoroutine("DoCheck");
-		}
-    }
-
 	void OnCollisionEnter(Collision collision){
 		if (collision.gameObject.CompareTag("Enemy")){
 		Die();
 		}
-	}
-	
-[System.Obsolete]
-IEnumerator DoCheck() {
-         yield return new WaitForSeconds(4f);
-		 Speed = Speed/1.6f;
-		 Smoke.startColor = new Color(167,167,167,255);
 	}
 }

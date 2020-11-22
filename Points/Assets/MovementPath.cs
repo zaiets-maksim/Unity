@@ -32,9 +32,6 @@ lineRenderer = GetComponent<LineRenderer>();
         }
         if(PathElements == null || PathElements.Length < 2)
         return;
-
-    if(PathType == PathTypes.loop)
-    Gizmos.DrawLine(PathElements[0].position, PathElements[PathElements.Length - 1].position);
 }
 
 public IEnumerator<Transform>GetNextPathPoint(){

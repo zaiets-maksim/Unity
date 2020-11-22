@@ -1,11 +1,14 @@
 fileFormatVersion: 2
 guid: 1b654634918d2dd4faada5cb71506ff5
-timeCreated: 1601736875
+timeCreated: 1603284791
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
   defaultReferences:
-  - MainRoad: {instanceID: 0}
+  - MainRoad: {fileID: 1558197836981452, guid: ad0c07cae296bb44a95c72d5c83a88e7, type: 2}
+  - ForestRoad: {fileID: 1283972873303816, guid: 87b6b1d99e08bb74a89975c67e84031f,
+      type: 2}
+  - Car: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
