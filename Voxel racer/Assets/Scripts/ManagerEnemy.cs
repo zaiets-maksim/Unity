@@ -42,7 +42,7 @@ public class ManagerEnemy : MonoBehaviour {
 	
 	
 	}else
-		goto link;
+		goto link;  //анитпаттерн
 	StartCoroutine(DoSpawn());
 	}
 

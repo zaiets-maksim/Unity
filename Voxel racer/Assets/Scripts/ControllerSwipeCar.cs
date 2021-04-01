@@ -5,39 +5,25 @@ using UnityEngine.EventSystems;
 
 public class ControllerSwipeCar : MonoBehaviour, IBeginDragHandler, IDragHandler {
 	public GameObject Car;
-		int SwipeR = 0;
-		int SwipeL = 0;
+	public static int SwipeR = 0;
+	public static int SwipeL = 0;
 		
-	void Start () {
-		PlayerPrefs.SetInt("swipeR",SwipeR);
-		PlayerPrefs.SetInt("swipeL",SwipeL);
-	}
 	public void OnBeginDrag(PointerEventData eventData){
 		if((Mathf.Abs(eventData.delta.x)) > (Mathf.Abs(eventData.delta.y))){
 
 		if(eventData.delta.x > 0){
-
-		SwipeR = 1;
-		PlayerPrefs.SetInt("swipeR",SwipeR);
+			SwipeR = 1;
 		}else{
 			SwipeR = 0;
-		PlayerPrefs.SetInt("swipeR",SwipeR);
 		}
 		
 
 		if(eventData.delta.x < 0){
-			
-		SwipeL = 1;
-		PlayerPrefs.SetInt("swipeL",SwipeL);
+			SwipeL = 1;
 		}else{
 			SwipeL = 0;
-		PlayerPrefs.SetInt("swipeL",SwipeL);
 			}
 		}
 	}
-		
-
-	public void OnDrag(PointerEventData eventData){
-
-	}
+	public void OnDrag(PointerEventData eventData){}
 }

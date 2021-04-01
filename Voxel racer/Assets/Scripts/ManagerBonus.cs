@@ -39,7 +39,7 @@ public class ManagerBonus : MonoBehaviour {
 	yield return new WaitForSeconds(RandomSecond);
 	
 	}else
-		goto link;
+		goto link; //анитпаттерн
 	StartCoroutine(DoSpawn());
 	}
 }

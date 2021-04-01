@@ -12,12 +12,12 @@ public class PlayB : MonoBehaviour, IPointerDownHandler, IPointerUpHandler {
 	public GameObject DieCanvas;
 	public Camera Camera3D;
 	public GameObject Canvas3D;
-	Animation _anim;
-	Animation _anim1;
+	private Animation _anim;
+	private Animation _anim1;
 	public GameObject Wall;
 	public GameObject Wall1;
 
-	ChangeOfIllumination obj;
+	private ChangeOfIllumination obj;
 	public GameObject AE;
 	public Light MainDerectionalLight;
 
@@ -32,6 +32,7 @@ public class PlayB : MonoBehaviour, IPointerDownHandler, IPointerUpHandler {
 	CanvasPanelGame.enabled = false;
 	_anim = Wall.GetComponent<Animation>();
 	_anim1 = Wall1.GetComponent<Animation>();
+	//AE.transform.position = new Vector3(0.21f,-2.31001f, AE.transform.position.z); //ВНИМАНИЕ!!! использовние хардкора
 	}
 	public void OnPointerDown(PointerEventData eventData){
 	this.transform.localScale = new Vector2 (0.97f, 0.97f);
@@ -42,7 +43,6 @@ public class PlayB : MonoBehaviour, IPointerDownHandler, IPointerUpHandler {
 	
 	_anim.Play("ClosingTheWall");
 	_anim1.Play("ClosingTheWall1");
-
 
 	obj.enabled = true;
 	AE.SetActive(true);

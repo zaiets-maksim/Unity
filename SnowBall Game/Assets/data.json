@@ -1,0 +1,10 @@
+{
+    "_enemiesMovementSpeed2": 6,
+    "_movementSpeedHippo2": 6,
+    "_theNumberOfHitPointsToWin2": 9,
+    "_snowballReloadSpeedHippo2": 2,
+    "_periodicityOfEnemyShots2": 6,
+    "_pointsForHittingTheWeakEnemy2": 3,
+    "_pointsForHittingTheMiddleEnemy2": 3,
+    "_pointsForHittingTheStrongEnemy2": 3
+}

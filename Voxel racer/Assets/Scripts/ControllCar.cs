@@ -11,8 +11,7 @@ public class ControllCar : MonoBehaviour {
 	private Vector2 Position;
 	public GameObject DieCanvas;
 	public Canvas CanvasPanelGame;
-	int _swipeR = 0;
-	int _swipeL = 0;
+	
 	Quaternion _CameraQuaternion;
 	Quaternion _rotationRight;
 	Quaternion _rotationLeft;
@@ -27,24 +26,20 @@ public class ControllCar : MonoBehaviour {
 		_rotationLeft = new Quaternion (0, -18, 0, 180);
 		_rotationCenter = new Quaternion (0, 0, 0, 180);
 		Car.transform.rotation = _rotationCenter;
+		ControllerSwipeCar.SwipeR = 0;
+		ControllerSwipeCar.SwipeL = 0;
 		_myTransform = GetComponent<Transform>();
 		_cameraTransform = _camera.GetComponent<Transform>();
 		StartCoroutine("UpdateSpeed");
-		
 	}
 	void FixedUpdate ()
 	{	
-	
 		_cameraTransform.position = new Vector3 (_myTransform.position.x/3, (_myTransform.position.y + 26.3f), _myTransform.position.z -21.7f);
 		_cameraTransform.rotation = _CameraQuaternion;
 		
 		Rb.velocity = new Vector3 (0, Rb.velocity.y, Speed);
 	
-
-			_swipeR = PlayerPrefs.GetInt("swipeR");
-			_swipeL = PlayerPrefs.GetInt("swipeL");
-	
-			 if(_swipeR == 1){
+			 if(ControllerSwipeCar.SwipeR == 1){
 				 Vector3 Pos2 = new Vector3 (6f, _myTransform.position.y, _myTransform.position.z);
 				 
 				 if(_myTransform.position.x < 0){
@@ -54,8 +49,7 @@ public class ControllCar : MonoBehaviour {
 					_myTransform.rotation = _rotationRight;
 					if(_myTransform.position.x >= -0.1f){
 			 _myTransform.rotation = _rotationCenter;
-			 	 _swipeR = 0;
-		PlayerPrefs.SetInt("swipeR",_swipeR);
+			 	 ControllerSwipeCar.SwipeR = 0;
 				}
 			}
 				else{
@@ -68,7 +62,7 @@ public class ControllCar : MonoBehaviour {
 			 }
 
 	
-				if(_swipeL == 1){
+				if(ControllerSwipeCar.SwipeL == 1){
 				 Vector3 Pos2 = new Vector3 (-6f, _myTransform.position.y, _myTransform.position.z);
 				 
 				 if(_myTransform.position.x > 0){
@@ -78,8 +72,7 @@ public class ControllCar : MonoBehaviour {
 					_myTransform.rotation = _rotationLeft;
 					if(_myTransform.position.x <= 0.1f){
 			 _myTransform.rotation = _rotationCenter;
-			 	 _swipeL = 0;
-			PlayerPrefs.SetInt("swipeL",_swipeL);
+			 	 ControllerSwipeCar.SwipeL = 0;
 					}
 			}
 				else{
@@ -91,20 +84,16 @@ public class ControllCar : MonoBehaviour {
 			 _myTransform.rotation = _rotationCenter;
 			 }
 		}
-
-			 
 	}
 
 	IEnumerator UpdateSpeed(){
-		
-		for (Speed = 20; Speed <= 65; Speed += 0.5f)
+		for (Speed = 25; Speed <= 65; Speed += 0.5f)
 		yield return new WaitForSeconds(3);
 	}
 
 	void LateUpdate(){
-		if(_myTransform.position.y < -10f){
+		if(_myTransform.position.y < -10f)
 		Die();
-		}
 	}
 
 	private void Die(){
@@ -118,8 +107,7 @@ public class ControllCar : MonoBehaviour {
 
 	}
 	void OnCollisionEnter(Collision collision){
-		if (collision.gameObject.CompareTag("Enemy")){
+		if (collision.gameObject.CompareTag("Enemy"))
 		Die();
-		}
 	}
 }

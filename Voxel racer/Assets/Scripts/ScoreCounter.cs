@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class ScoreCounter : MonoBehaviour {
-public static int _var; //суперглобальная переменная
+public static int _var;
 public Text Counter;
 public GameObject Car;
 Transform _myTransform;

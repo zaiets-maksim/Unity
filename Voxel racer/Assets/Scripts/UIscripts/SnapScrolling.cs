@@ -40,7 +40,8 @@ public class SnapScrolling : MonoBehaviour {
 		if(_isScrolling || _scrollVelocity > 400){
 			ArrowR.enabled = false;
 			ArrowL.enabled = false;
-			return;}else{
+			return;
+			}else{
 			ArrowR.enabled = true;
 			ArrowL.enabled = true;
 			}
